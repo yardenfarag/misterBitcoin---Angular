@@ -1,0 +1,7 @@
+<div class="nft-page container">
+    <div class="loading slide-in-bottom" *ngIf="isLoading">
+        <img src="https://res.cloudinary.com/trellis22/image/upload/v1672603773/jcmbp7sdyqjuxdz4edht.gif"
+            alt="Loading...">
+    </div>
+    <nft-list (onRemoveNft)="onRemoveNft($event)" [nfts]="nfts$ | async"></nft-list>
+</div>

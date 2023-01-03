@@ -1,0 +1,16 @@
+<section *ngIf="contact" class="contact-edit">
+    <button routerLink="/contact" class="back">X</button>
+    <h2>{{contact._id ? 'Edit':'Add'}} Contact</h2>
+    <form (ngSubmit)="onSaveContact()">
+        <label for="name"></label>
+        <input [(ngModel)]="contact.name" type="text" name="name" id="name" placeholder="Name">
+
+        <label for="phone"></label>
+        <input [(ngModel)]="contact.phone" type="text" name="phone" id="phone" placeholder="Phone">
+
+        <label for="email"></label>
+        <input [(ngModel)]="contact.email" type="email" name="email" id="email" placeholder="Email">
+
+        <button>Save</button>
+    </form>
+</section>

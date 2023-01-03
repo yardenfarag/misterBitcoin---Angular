@@ -1,0 +1,37 @@
+<div class="user-profile container">
+    <div class="user-info">
+        <div class="first">
+            <div *ngIf="user" class="content">
+                <div class="card">
+                    <div class="firstinfo"><img src="https://i.pravatar.cc/220?u={{user.name}}" />
+                        <div class="profileinfo">
+                            <h1>{{user.name}}</h1>
+                            <p class="bio">Coins: {{user.coins}}</p>
+                            <p>BTC: {{user.BTC}}</p>
+                            <!-- <button (click)="onRemoveContact($event)" class="remove-btn">X</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="user-activity">
+            <h1>Activity</h1>
+            <h5 *ngIf="!moves?.length">No activity yet</h5>
+            <move-list [moves]="moves"></move-list>
+        </div>
+    </div>
+
+    <div class="user-nfts">
+        <h1>Collection</h1>
+        <h5 *ngIf="!nfts?.length">No NFTs to display</h5>
+        <div class="nft-list">
+            <div *ngFor="let nft of nfts" class="nft">
+                <h2>Value: <span>{{nft.price}}</span> Coins</h2>
+                <div class="avatar">
+                    <img src="{{nft.imgUrl}}" alt="">
+                </div>
+                <button (click)="onSellNft(nft)">Sell</button>
+            </div>
+        </div>
+    </div>
+</div>

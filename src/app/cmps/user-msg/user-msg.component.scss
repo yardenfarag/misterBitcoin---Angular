@@ -1,0 +1,17 @@
+.user-msg {
+    width: 300px;
+    height: fit-content;
+    background-color: var(--clr2);
+    border: var(--clr5) solid 2px;
+    border-radius: 5px;
+    position: fixed;
+    z-index: 1000;
+    top: 5px;
+    left: 50%;
+    right:50%;
+    transform: translate(-50%,50%);
+    padding: 10px;
+    margin:0;
+    text-align: center;
+    font-size: 0.7rem;
+}

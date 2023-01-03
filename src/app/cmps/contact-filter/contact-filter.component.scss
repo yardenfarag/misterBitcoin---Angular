@@ -1,0 +1,19 @@
+.contact-filter {
+    padding:10px;
+    input {
+        height: 30px;
+        border: 1px solid var(--clr4);
+        outline: 0;
+        padding:10px;
+        color: var(--clr5);
+
+        &::placeholder {
+            color: var(--clr4);
+        }
+        &:focus {
+            border:0;
+            outline: 2px solid var(--clr5);
+        }
+
+    }
+}

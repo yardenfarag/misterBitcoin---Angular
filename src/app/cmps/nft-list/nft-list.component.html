@@ -1,0 +1,9 @@
+<div class="nft-list">
+    <div *ngFor="let nft of nfts" class="nft">
+        <h2>Price: <span>{{nft.price}}</span> Coins</h2>
+        <div class="avatar">
+            <img src="{{nft.imgUrl}}" alt="">
+        </div>
+        <button (click)="onBuyNft(nft)">Buy</button>
+    </div>
+</div>

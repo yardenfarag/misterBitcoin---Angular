@@ -1,0 +1,30 @@
+<header class="main-header">
+    <div class="header container">
+        <div routerLink="/" class="logo">
+            <img src="https://res.cloudinary.com/trellis22/image/upload/v1672603727/k2vfrkdwmbpwj8uzmxo3.svg">
+        </div>
+        <nav  [class.menuOpen]="isMenuOpen">
+            <ul>
+                <li>
+                    <a class="dark-mode-btn" (click)="toggleMenu(); toggleDarkMode()">{{isDark ? '🔆' : '🌙'}}</a>
+                </li>
+                <li>
+                    <a (click)="toggleMenu()" routerLink="/contact" routerLinkActive="active">Contacts</a>
+                </li>
+                <li>
+                    <a (click)="toggleMenu()" routerLink="/nft" routerLinkActive="active">NFTs</a>
+                </li>
+                <li>
+                    <a (click)="toggleMenu()" routerLink="/user" routerLinkActive="active">Profile</a>
+                </li>
+                <li>
+                    <a (click)="toggleMenu()" routerLink="/statistic" routerLinkActive="active">Statistic</a>
+                </li>
+                <li>
+                    <a (click)="toggleMenu()" routerLink="/signup" routerLinkActive="active">Sign Up</a>
+                </li>
+            </ul>
+        </nav>
+        <button class="btn-menu" (click)="toggleMenu()">{{isMenuOpen ? 'X' : '☰'}}</button>
+    </div>
+</header>

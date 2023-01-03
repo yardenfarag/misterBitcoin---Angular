@@ -1,0 +1,15 @@
+<div class="overlay">
+    <button class="logout" *ngIf="user" (click)="Logout()">Logout</button>
+    <form *ngIf="!user" [formGroup]="form" (ngSubmit)="onSignUp()">
+        <header class="head-form">
+            <h2>Sign Up</h2>
+        </header>
+        <div class="field-set">
+            <h2>Hi, what's your name?</h2>
+            <input name="name" class="form-input" formControlName="name" id="name" type="text">
+        </div>
+        <div>
+            <button type="submit">Sign Up</button>
+        </div>
+    </form>
+</div>

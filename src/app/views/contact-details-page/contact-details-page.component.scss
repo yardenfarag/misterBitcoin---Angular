@@ -1,0 +1,125 @@
+@import '../../../styles.scss';
+
+%reset {
+  margin: 0;
+  padding: 0;
+}
+
+%flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin dimensions($width: null, $height: null) {
+  width: $width;
+  min-height: $height;
+}
+
+.content {
+  position: fixed;
+  left:50%;
+  top:50%;
+  transform: translate(-50%, -50%);
+  z-index: 30;
+}
+
+.card {
+  @include dimensions(700px, 400px);
+  padding: 20px;
+  border-radius: 3px;
+  background-image: linear-gradient(-298deg, var(--clr2) 35%, var(--clr7) 35%);
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include for-narrow-layout  {
+    width:350px;
+  }
+
+  .transfer-funds {
+    display:flex;
+    gap:4px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    @include for-narrow-layout {
+      flex-direction: column;
+    }
+    button {
+      margin:0;
+    }
+    input {
+      height: 33px;
+    }
+  }
+
+  .go-back {
+    .back {
+      position: absolute;
+      width:30px;
+      left:93%;
+      top: 4%;
+      @include for-narrow-layout {
+        left:90%;
+        top: 1%;
+      }
+    }
+  }
+
+}
+
+.badgescard {
+  padding: 10px 20px;
+  border-radius: 3px;
+  background-color: #ECECEC;
+  width: 480px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  z-index: -1;
+  left: 10px;
+  bottom: 10px;
+  @extend %flex;
+  animation: cubic-bezier(0.425, 1.040, 0.470, 1.105) 0.75s forwards;
+
+  span {
+      font-size: 1.6em;
+      margin: 0px 6px;
+      opacity: 0.6;
+  }
+}
+
+.firstinfo {
+  @extend %flex;
+  flex-direction: row;
+  z-index: 2;
+  position: relative;
+  @include for-narrow-layout {
+    flex-direction: column;
+  }
+
+  img {
+      border-radius: 50%;
+      width: 180px;
+      height: 180px;
+  }
+
+  .profileinfo {
+      padding: 0px 30px;
+      @include for-narrow-layout {
+        text-align: center;
+      }
+
+      h1 {
+          font-size: 1.7em;
+      }
+
+      p.bio {
+          padding: 10px 0px;
+          line-height: 1.5;
+          font-style: initial;
+      }
+  }
+}

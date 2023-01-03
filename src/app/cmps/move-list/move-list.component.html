@@ -1,0 +1,5 @@
+<section *ngIf="moves" class="move-list">
+    <div *ngFor="let move of moves" class="user-moves">
+        <h5>Transferred <span>{{move.amount}}</span> coins to {{move.to}} {{move.at | timeAgo}}</h5>
+    </div>
+</section>

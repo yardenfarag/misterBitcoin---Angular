@@ -1,0 +1,56 @@
+.loading {
+    display: flex;
+    justify-content: center;
+    img {
+        margin-top: 200px;
+        width: 100px;
+        border-radius: 50%;
+    }
+    &.slide-in-bottom {
+        -webkit-animation: slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+                animation: slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+}
+
+.contact-app {
+
+  &.blur {
+    filter: blur(8px);
+  }
+  .actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button {
+      margin: 0;
+      height: 28px;
+    }
+  }
+}
+
+
+ @-webkit-keyframes slide-in-bottom {
+    0% {
+      -webkit-transform: translateY(1000px);
+              transform: translateY(1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-in-bottom {
+    0% {
+      -webkit-transform: translateY(1000px);
+              transform: translateY(1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  

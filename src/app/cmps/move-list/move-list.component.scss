@@ -1,0 +1,11 @@
+.move-list {
+    .user-moves {
+        display: flex;
+        gap:10px;
+
+        span {
+            color: var(--clr5);
+            font-size: 1.3rem;
+        }
+    }
+}
