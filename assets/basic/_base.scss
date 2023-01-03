@@ -58,6 +58,7 @@ input {
 }
 input::placeholder {
     color: var(--clr4);
+    font-family: raleway-regular;
 }
 input:focus {
     border:0;
