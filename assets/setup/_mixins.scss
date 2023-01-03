@@ -1,0 +1,102 @@
+/* Media queries Breakpoint mixins */
+@mixin for-mobile-layout {
+  @media (max-width: $break-mobile) {
+    @content;
+  }
+}
+
+@mixin for-narrow-layout {
+  @media (max-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin for-normal-layout {
+  @media (min-width: $break-normal) {
+    @content;
+  }
+}
+
+@mixin for-wide-layout {
+  @media (min-width: $break-wide) {
+    @content;
+  }
+}
+
+@mixin for-ultra-wide-layout {
+  @media (min-width: 1800px) {
+    @content;
+  }
+}
+
+@mixin layoutGTC($max) {
+  grid-template-columns:
+    minmax($layoutPadding, 1fr)
+    minmax(auto, $max)
+    minmax($layoutPadding, 1fr);
+}
+
+/* Media  Mixins */
+
+
+@mixin aspect-ratio($width: 1, $height: 1) {
+  position: relative;
+  overflow: hidden;
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    padding-top: calc($height / $width) * 100%;
+  }
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  > img {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+
+@mixin hover-supported {
+  @media not all and (pointer: coarse) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+
+@mixin label {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 3px;
+  color: $light-color1;
+}
+
+@mixin media($keys...) {
+  @each $key in $keys {
+    @media (min-width: map-get($breakpoints, $key)) {
+      @content;
+    }
+  }
+}
+
+
+@mixin type($type: bold) {
+  @if $type == bold {
+    font-variation-settings: 'wght' 430;
+  } @else if $type == boldCondensed {
+    font-variation-settings: 'wght' 430, 'wdth' 80;
+    letter-spacing: em(1.5px);
+  } @else if $type == condensed {
+    font-variation-settings: 'wdth' 80;
+    letter-spacing: em(6.72px);
+  } @else if $type == light {
+    font-variation-settings: 'wght' 200;
+  }
+}
