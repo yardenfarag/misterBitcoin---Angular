@@ -46,6 +46,10 @@ export class ContactDetailsPageComponent implements OnInit {
     }
   }
   onTransferFunds() {
+    if (this.amount < 1) {
+      this.userMsgService.setMsg('Please enter a value greater than 0!')
+      return
+    }
     const user = this.userService.getUser()
     if (this.amount > user.coins) {
       this.userMsgService.setMsg('Not enough coins!')

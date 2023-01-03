@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/models/user/user.model';
+import { UserMsgService } from 'src/app/services/user-msg.service';
 
 @Component({
   selector: 'signup-page',
@@ -16,6 +17,7 @@ export class SignupPageComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
+    private userMsgService: UserMsgService
   ) {
     this.form = this.fb.group({
       name: ['', Validators.minLength(3)]
@@ -28,7 +30,10 @@ export class SignupPageComponent implements OnInit {
     this.user = this.userService.getUser()
   }
   onSignUp() {
-    if (!this.form.value.name) return
+    if (!this.form.value.name){
+      this.userMsgService.setMsg('A name is required!')
+      return
+    } 
     this.userService.signup(this.form.value.name)
     this.router.navigateByUrl('/user')
     

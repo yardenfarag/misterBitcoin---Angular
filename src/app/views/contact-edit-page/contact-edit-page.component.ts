@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { lastValueFrom, Subscription } from 'rxjs';
 import { Contact } from 'src/app/models/contact/contact.model';
 import { ContactService } from 'src/app/services/contact.service';
+import { UserMsgService } from 'src/app/services/user-msg.service';
 
 @Component({
     selector: 'contact-edit',
@@ -13,7 +14,8 @@ export class ContactEditComponent implements OnInit {
     constructor(
         private contactService: ContactService,
         private router: Router,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private userMsgService: UserMsgService
     ) { }
 
     contact!: Contact
@@ -26,6 +28,11 @@ export class ContactEditComponent implements OnInit {
     }
 
     onSaveContact() {
+        const {name, phone, email} = this.contact
+        if(!name || !phone || !email) {
+            this.userMsgService.setMsg('All fields are required!')
+            return
+        }
         this.contactService.saveContact(this.contact)
         this.router.navigateByUrl('/contact')
 
