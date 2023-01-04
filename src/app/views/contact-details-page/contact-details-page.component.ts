@@ -46,6 +46,7 @@ export class ContactDetailsPageComponent implements OnInit {
     }
   }
   onTransferFunds() {
+    if(!this.amount) return
     if (this.amount < 1) {
       this.userMsgService.setMsg('Please enter a value greater than 0!')
       return
