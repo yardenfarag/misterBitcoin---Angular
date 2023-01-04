@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject, of, throwError } from 'rxjs';
 import { Contact, ContactFilter } from '../models/contact/contact.model';
+import { StorageService } from './storage.service';
 
-
+const CONTACT_KEY = 'contactDB'
 
 const CONTACTS = [
     {
@@ -128,7 +129,7 @@ const CONTACTS = [
 export class ContactService {
 
     //mock the server
-    private _contactsDb: Contact[] = CONTACTS;
+    private _contactsDb: Contact[] = this.storageService.load(CONTACT_KEY) || CONTACTS;
 
     private _contacts$ = new BehaviorSubject<Contact[]>([])
     public contacts$ = this._contacts$.asObservable()
@@ -136,7 +137,7 @@ export class ContactService {
     private _contactFilter$ = new BehaviorSubject<ContactFilter>({ term: '' });
     public contactFilter$ = this._contactFilter$.asObservable()
 
-    constructor() {
+    constructor(private storageService: StorageService) {
     }
 
 
@@ -165,7 +166,7 @@ export class ContactService {
     public deleteContact(id: string) {
         //mock the server work
         this._contactsDb = this._contactsDb.filter(contact => contact._id !== id)
-
+        this.storageService.store(CONTACT_KEY, this._contactsDb)
         // change the observable data in the service - let all the subscribers know
         this._contacts$.next(this._contactsDb)
     }
@@ -185,6 +186,7 @@ export class ContactService {
     private _updateContact(contact: Contact) {
         //mock the server work
         this._contactsDb = this._contactsDb.map(c => contact._id === c._id ? contact : c)
+        this.storageService.store(CONTACT_KEY, this._contactsDb)
         // change the observable data in the service - let all the subscribers know
         this._contacts$.next(this._sort(this._contactsDb))
     }
@@ -196,6 +198,7 @@ export class ContactService {
         
         if (typeof newContact.setId === 'function') newContact.setId(getRandomId());
         this._contactsDb.push(newContact)
+        this.storageService.store(CONTACT_KEY, this._contactsDb)
         this._contacts$.next(this._sort(this._contactsDb))
     }
 

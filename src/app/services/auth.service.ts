@@ -11,7 +11,7 @@ export class AuthService {
 
   checkLoggedIn() {
     const user = this.userService.getUser()
-    if(user) return of(true)
-    return of(false)
+    if(user) return true
+    return false
   }
 }

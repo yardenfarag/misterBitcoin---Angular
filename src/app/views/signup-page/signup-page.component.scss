@@ -24,6 +24,16 @@ form {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  input {
+    &.ng-touched {
+        border:0;
+        outline: 2px solid tomato;
+    }
+    &.ng-valid {
+        border:0;
+        outline:2px solid var(--clr5);
+    }
+}
   
   header {
     text-align: center;

@@ -14,7 +14,7 @@
     align-items: center;
     .back {
         align-self: flex-end;
-        width: 40px;
+        width: 35px;
     }
     form {
         padding: 20px;
@@ -22,6 +22,16 @@
         flex-direction: column;
         gap:20px;
         align-items: center;
+        input {
+            &.ng-touched {
+                border:0;
+                outline: 2px solid tomato;
+            }
+            &.ng-valid {
+                border:0;
+                outline:2px solid var(--clr5);
+            }
+        }
     }
 
 }

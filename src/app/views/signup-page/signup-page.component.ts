@@ -31,7 +31,7 @@ export class SignupPageComponent implements OnInit {
   }
   onSignUp() {
     if (!this.form.value.name){
-      this.userMsgService.setMsg('A name is required!')
+      this.userMsgService.setMsg('Name field is required!')
       return
     } 
     this.userService.signup(this.form.value.name)
