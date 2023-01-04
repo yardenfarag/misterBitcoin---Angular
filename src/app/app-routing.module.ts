@@ -5,6 +5,7 @@ import { ContactResolver } from './services/contact.resolver';
 import { ContactDetailsPageComponent } from './views/contact-details-page/contact-details-page.component';
 import { ContactEditComponent } from './views/contact-edit-page/contact-edit-page.component';
 import { ContactPageComponent } from './views/contact-page/contact-page.component';
+import { GamePageComponent } from './views/game-page/game-page.component';
 import { HomePageComponent } from './views/home-page/home-page.component';
 import { NftPageComponent } from './views/nft-page/nft-page.component';
 import { ProfilePageComponent } from './views/profile-page/profile-page.component';
@@ -14,6 +15,7 @@ import { StatisticPageComponent } from './views/statistic-page/statistic-page.co
 const routes: Routes = [
   {path:'signup', component: SignupPageComponent},
   {path:'nft', component: NftPageComponent, canActivate: [AuthGuard]},
+  {path:'play', component: GamePageComponent, canActivate: [AuthGuard]},
   {path:'user', component: ProfilePageComponent, canActivate: [AuthGuard]},
   {path:'statistic', component: StatisticPageComponent, canActivate: [AuthGuard]},
   {path: 'contact', component: ContactPageComponent, canActivate: [AuthGuard], children: [

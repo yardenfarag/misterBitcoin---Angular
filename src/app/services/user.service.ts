@@ -67,6 +67,13 @@ export class UserService {
     user.coins -= nft.price
     this.storageService.store(this.USER_KEY, user)
   }
+
+  addCoins(coins:number) {
+    const user = this.storageService.load(this.USER_KEY)
+    user.coins += coins
+    this.storageService.store(this.USER_KEY, user)
+  }
+
   removeNft(nft: Nft) {
     const user = this.storageService.load(this.USER_KEY)
     const idx = user.nfts.findIndex((n:Nft) => n._id === nft._id)

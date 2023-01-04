@@ -23,6 +23,8 @@ import { NftListComponent } from './cmps/nft-list/nft-list.component';
 import { NftPageComponent } from './views/nft-page/nft-page.component';
 import { UserMsgComponent } from './cmps/user-msg/user-msg.component';
 import { CommonModule } from '@angular/common';
+import { CoinGameComponent } from './cmps/coin-game/coin-game.component';
+import { GamePageComponent } from './views/game-page/game-page.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { CommonModule } from '@angular/common';
     NftListComponent,
     NftPageComponent,
     UserMsgComponent,
+    CoinGameComponent,
+    GamePageComponent,
     
   ],
   imports: [

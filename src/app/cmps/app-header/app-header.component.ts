@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, ViewChild, Renderer2 } from '@angular/core';
 import { DarkModeService } from 'src/app/services/dark-mode.service';
 
 @Component({
@@ -8,7 +8,12 @@ import { DarkModeService } from 'src/app/services/dark-mode.service';
 })
 export class AppHeaderComponent{
 
-  constructor(private darkModeService: DarkModeService) {}
+  constructor(
+    private darkModeService: DarkModeService,
+    private renderer: Renderer2
+    ) {}
+
+  @ViewChild('body') body:any;
 
   isDark = false
   isMenuOpen = false
@@ -16,13 +21,13 @@ export class AppHeaderComponent{
   ngOnInit():void {
     const isDarkMode = this.darkModeService.checkDarkMode()
     this.isDark = isDarkMode
-    this.isDark ? document.body.classList.add('dark') : document.body.classList.remove('dark')
+    this.isDark ? this.renderer.addClass(document.body, 'dark') : this.renderer.removeClass(document.body, 'dark')
   }
 
   toggleDarkMode() {
     this.isDark = !this.isDark
     this.darkModeService.savePrefs(this.isDark)
-    document.body.classList.toggle('dark')
+    this.renderer[this.isDark ? 'addClass' : 'removeClass'](document.body, 'dark')
   }
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen

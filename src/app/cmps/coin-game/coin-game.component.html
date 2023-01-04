@@ -1,0 +1,12 @@
+<section class="coin-game">
+    <h1>Collect the falling coins</h1>
+    <button (click)="startGame()">Start</button>
+    <h2>Coins collected: {{coinsCollected}}</h2>
+    <div class="coin-field" #coinField>
+        <div class="coin" *ngFor="let coin of coins" [ngStyle]="{'position': 'absolute','top': coin.y + 'px', 'left': coin.x + 'px'}"
+            (click)="collectCoin(coin)">
+           <img src="https://res.cloudinary.com/trellis22/image/upload/v1672834820/vc4ffylwyqmwsmobqbt2.png" alt="">
+        </div>
+    </div>
+    <h3 *ngIf="isGameOver">Game over!</h3>
+</section>
